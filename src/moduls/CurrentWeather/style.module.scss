@@ -1,0 +1,44 @@
+.currentWeather{
+  display: flex;
+  flex-direction: column;
+  max-width: 450px;
+  border-radius: 10px;
+  width: 100%;
+  background-color: #05a8da91;
+  margin: 30px auto;
+  padding: 20px;
+}
+
+.titleblock {
+  display: flex;
+  justify-content: space-between;
+}
+
+.rightBlock {
+  margin-right: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center
+}
+.leftblock {
+  display: flex;
+  flex-direction: column;
+}
+
+.locationWeather {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.temp {
+  font-size: 64px;
+  font-weight: 700;
+}
+
+.description {
+  text-transform: capitalize;
+  font-size: 22px;
+  display: flex;
+  justify-content: space-between;
+}
