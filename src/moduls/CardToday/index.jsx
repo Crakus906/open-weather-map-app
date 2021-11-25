@@ -4,7 +4,7 @@ import moment from 'moment';
 import { useSelector } from 'react-redux';
 import { currentWeatherSelector } from '../../redux/selector/selector';
 import { DownSunsetSvg, SunsetSvg, UpSunsetSvg } from '../../assets/icon';
-import CardDataToday from '../../components/CardDataToday';
+import { CardDataToday, WrapperBlock } from '../../components';
 
 import styles from './style.module.scss';
 
@@ -48,8 +48,9 @@ export default function CardToday() {
   ]
 
 	return (
-		<div className={cx('currentWeather')}>
-      <div className={cx('title')}>Weather Today in {name}, {sys.country}</div>
+		<WrapperBlock
+      title={`Weather Today in ${name}, ${sys.country}`}
+    >
       <div className={cx('todayDetailsCard')}>
         <div className={cx('feelsLikeBlock')}>
           <span className={cx('tempFeels')} feelsLikeBlock >{main.feels_like}°</span>
@@ -74,6 +75,6 @@ export default function CardToday() {
           <CardDataToday value={item.value} label={item.label} />
         ))
       }
-		</div>
+		</WrapperBlock>
 	)
 }

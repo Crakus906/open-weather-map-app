@@ -1,17 +1,8 @@
-.currentWeather{
-  display: flex;
-  flex-direction: column;
-  max-width: 450px;
-  border-radius: 10px;
-  width: 100%;
-  background-color: #05a8da91;
-  margin: 30px auto;
-  padding: 20px;
-}
-
 .titleblock {
   display: flex;
   justify-content: space-between;
+  padding: 0 20px;
+
 }
 
 .rightBlock {
@@ -25,10 +16,11 @@
   flex-direction: column;
 }
 
-.locationWeather {
+.location-weather {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding: 20px 20px 0;
 }
 
 .temp {
@@ -41,4 +33,5 @@
   font-size: 22px;
   display: flex;
   justify-content: space-between;
+  padding: 0 20px 20px;
 }

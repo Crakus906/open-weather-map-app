@@ -1,24 +1,35 @@
 import React from 'react';
 import cn from 'classnames/bind';
+import moment from 'moment';
 import { useSelector } from 'react-redux';
-import { oneCallWeatherSelector } from '../../redux/selector/selector';
+import { WrapperBlock, HourCard } from '../../components';
+import { oneCallWeatherSelector, currentWeatherSelector } from '../../redux/selector/selector';
 
 import styles from './style.module.scss';
-import moment from 'moment';
 
 const cx = cn.bind(styles);
 
 export default function CardHourly() {
-//  const {hourly}  = useSelector(oneCallWeatherSelector);
+  const currentWeather = useSelector(currentWeatherSelector);
   const oneCallData  = useSelector(oneCallWeatherSelector);
-  const a = oneCallData.hourly.map(item => moment(item.dt).format(''))
 
-  console.log(a, );
+  if(!oneCallData) return null
+
+  const dataTime = oneCallData?.hourly.map(item => moment.unix(item.dt).format('dddd MMMM, Do'));
+  const days = dataTime.filter((item, pos) => dataTime.indexOf(item) === pos)
+
 	return (
-		<div className={cx('cardHourly')}>
-      {
-        // oneCallData?.hourly.map(item => (<div>{moment(item.dt)}</div>))
-      }
-		</div>
+		<WrapperBlock
+      title={`Hourly Weather - ${currentWeather?.name}, ${currentWeather?.sys?.country}`}
+      thisTime={`As of ${moment().format(' h:mm:a ')}`}
+    >
+      {days.map((day) => 
+        <HourCard 
+          hourly={oneCallData.hourly}
+          day={day}
+        />
+      )}
+      
+		</WrapperBlock>
 	)
 }
