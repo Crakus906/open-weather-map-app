@@ -1,14 +1,14 @@
 import React from 'react';
 import cn from 'classnames/bind';
 import moment from 'moment';
-
-import styles from './style.module.scss';
 import { useSelector } from 'react-redux';
 import { currentWeatherSelector } from '../../redux/selector/selector';
 
+import styles from './style.module.scss';
+
 const cx = cn.bind(styles);
 
-export default function CurrentWeather(currentWeather) {
+export default function CurrentWeather() {
 	const weatherData = useSelector(currentWeatherSelector)
 
 	if(!weatherData) return null;
@@ -17,9 +17,6 @@ export default function CurrentWeather(currentWeather) {
 		name, 
 		weather,
 		main,
-		wind,
-    sys,
-    timezone
 	} =  weatherData;
 
 	return (

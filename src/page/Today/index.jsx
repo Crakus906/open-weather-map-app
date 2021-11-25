@@ -1,8 +1,7 @@
 import React from 'react';
 import cn from 'classnames/bind';
 import Weather from '../Weather';
-import CurrentWeather from '../../moduls/CurrentWeather';
-import CardToday from '../../moduls/CardToday';
+import { CurrentWeather, CardToday } from '../../moduls';
 
 import styles from './style.module.scss';
 

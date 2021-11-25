@@ -11,7 +11,6 @@ const Routes = () => (
       <Route exact path="/" component={Weather} />
       <Route path="/today" component={ToDay} />   
       <Route path="/hourly" component={Hourly} />      
-   
     </Switch>
   </Suspense>
 );

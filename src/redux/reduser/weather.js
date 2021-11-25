@@ -1,19 +1,22 @@
-/* eslint-disable import/no-anonymous-default-export */
-import {
-    getWeatherCity
-  } from '../action/weather';
+import { GET_CURRENT_WEATHER, GET_ONE_CALL_WEATHER } from '../../constans/action';
     
   const initState = {
     weatherCity: null,
+    oneCallWeather: null
   };
   
   export default (state = initState, { type, payload }) => {
     switch (type) {
-      case `${getWeatherCity}`:
+      case GET_CURRENT_WEATHER:
         return {
           ...state,
-          weatherCity: payload
+          weatherCity: payload,
         };
+      case GET_ONE_CALL_WEATHER: 
+        return {
+          ...state,
+          oneCallWeather: payload,
+        }
       default:
         return state;
     }

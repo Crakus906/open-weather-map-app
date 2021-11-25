@@ -3,7 +3,6 @@ import cn from 'classnames/bind';
 
 import styles from './style.module.scss';
 
-
 const cx = cn.bind(styles);
 
 export default function CardDataToday({ label, value }) {

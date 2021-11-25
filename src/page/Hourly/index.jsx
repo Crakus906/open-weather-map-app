@@ -1,21 +1,30 @@
-import React from 'react';
+import React,{ useEffect }  from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import cn from 'classnames/bind';
-import { useSelector } from 'react-redux';
+import { CardHourly } from '../../moduls';
 import { currentWeatherSelector } from '../../redux/selector/selector';
-import CurrentWeather from '../../moduls/CurrentWeather';
-import Header from '../../components/Header';
+import { oneCallWeather } from '../../redux/action/weather';
+import Weather from '../Weather';
 
 import styles from './style.module.scss';
-import Weather from '../Weather';
 
 const cx = cn.bind(styles);
 
 export default function Hourly() {
-  const currentWeather = useSelector(currentWeatherSelector)
- 
+  const dispatch = useDispatch();
+  
+  const currentWeather = useSelector(currentWeatherSelector);
+  
+  useEffect(() => {
+    if(currentWeather) {
+      const { coord } = currentWeather ;
+      dispatch(oneCallWeather(coord.lat, coord.lon))
+    }
+  },[dispatch])
+
   return (
     <Weather >
-      hui
+      <CardHourly />
     </Weather>
   )
 }

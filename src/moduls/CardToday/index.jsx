@@ -3,17 +3,15 @@ import cn from 'classnames/bind';
 import moment from 'moment';
 import { useSelector } from 'react-redux';
 import { currentWeatherSelector } from '../../redux/selector/selector';
-
-import styles from './style.module.scss';
 import { DownSunsetSvg, SunsetSvg, UpSunsetSvg } from '../../assets/icon';
 import CardDataToday from '../../components/CardDataToday';
+
+import styles from './style.module.scss';
 
 const cx = cn.bind(styles);
 
 export default function CardToday() {
 	const currentWeather = useSelector(currentWeatherSelector);
-
-
 
 	if(!currentWeather) return null;
 
