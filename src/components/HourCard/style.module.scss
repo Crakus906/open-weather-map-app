@@ -1,9 +1,27 @@
-.cardItem {
-
+.card-item {
+  border-bottom: 1px solid #dedede;
 }
 
-.row {
+.summary {
   display: flex;
   align-items: center;
   justify-content: space-around;
+}
+
+.arrow-svg {
+  width: 20px;
+}
+
+.arrow-svg-active {
+  transform: rotate(180deg);
+  transition: 0.3;
+}
+
+.weather-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img {
+    width: 70px;
+  }
 }

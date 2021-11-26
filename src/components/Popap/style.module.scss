@@ -1,0 +1,14 @@
+.popap {
+  width: 85%;
+  display: flex;
+  justify-content: space-around;
+  border-radius: 5px;
+  border: 1px solid #dedede;
+  margin: 0 auto 15px;
+  padding: 10px 0;
+}
+
+.popap-block {
+  display: flex;
+  flex-direction: column;
+}

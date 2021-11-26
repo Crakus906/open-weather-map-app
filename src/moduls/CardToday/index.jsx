@@ -51,15 +51,15 @@ export default function CardToday() {
 		<WrapperBlock
       title={`Weather Today in ${name}, ${sys.country}`}
     >
-      <div className={cx('todayDetailsCard')}>
-        <div className={cx('feelsLikeBlock')}>
-          <span className={cx('tempFeels')} feelsLikeBlock >{main.feels_like}°</span>
+      <div className={cx('today-details-dard')}>
+        <div className={cx('feelsLike-block')}>
+          <span className={cx('temp-feels')} feelsLikeBlock >{main.feels_like}°</span>
           <span>Feels Like</span>         
         </div>
-        <div className={cx('sunsetBlock')}>
-          <SunsetSvg className={cx('sunsetSvg')}/>
+        <div className={cx('sunset-block')}>
+          <SunsetSvg className={cx('sunset-svg')}/>
           <div className={cx('sunset')}>
-            <div className={cx('leftTime')}>
+            <div className={cx('left-time')}>
               <UpSunsetSvg className={cx('arrow')} />
               {moment.unix(sys.sunrise).format('h:mm a')}
             </div>

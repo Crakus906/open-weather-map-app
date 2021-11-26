@@ -24,10 +24,16 @@ export default function CardHourly() {
       thisTime={`As of ${moment().format(' h:mm:a ')}`}
     >
       {days.map((day) => 
-        <HourCard 
-          hourly={oneCallData.hourly}
-          day={day}
-        />
+        <>
+          <span className={cx('day')}>{day}</span>
+          {oneCallData.hourly.map((item, id) => (
+            day === moment.unix(item.dt).format('dddd MMMM, Do') ?
+            <HourCard 
+              item={item}
+              id={id}
+            /> : null
+          ))}
+        </>
       )}
       
 		</WrapperBlock>

@@ -1,14 +1,4 @@
-.currentWeather{
-  display: flex;
-  flex-direction: column;
-  max-width: 450px;
-  border-radius: 10px;
-  width: 100%;
-  background-color: #05a8da91;
-  margin: 30px auto;
-}
-
-.todayDetailsCard {
+.today-details-dard {
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
@@ -16,17 +6,17 @@
   margin-bottom: 25px;
 }
 
-.feelsLikeBlock {
+.feels-like-block {
   display: flex;
   flex-direction: column;
 }
 
-.tempFeels {
+.temp-feels {
   font-size: 56px;
   font-weight: 700;
 }
 
-.sunsetBlock {
+.sunset-block {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -41,7 +31,7 @@
   margin-top: 6px;
 }
  
-.leftTime {
+.left-time {
   margin-right: 10px;
 }
 

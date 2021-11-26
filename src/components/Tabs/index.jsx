@@ -1,37 +1,42 @@
 import React from 'react';
 import cn from 'classnames/bind';
+import { useLocation } from 'react-router-dom'
 import { useHistory } from "react-router-dom";
 
 import styles from './style.module.scss';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { oneCallWeather, weatherCity } from '../../redux/action/weather';
-// import { currentWeatherSelector } from '../../redux/selector/selector';
 
 const cx = cn.bind(styles);
 
 export default function Tabs() {
-  // const dispatch = useDispatch()
   const history = useHistory();
-  
-  // useEffect(() => {
-  //   if(currentWeather) {
-  //     const { coord } = currentWeather ;
-  //     dispatch(oneCallWeather(coord.lat, coord.lon))
-  //   }
-  // },[dispatch])
+  const location = useLocation();
 
-  // const currentWeather = useSelector(currentWeatherSelector);
+  const handleToday = () => {
+    history.push('/today')
+  };
 
-  // const handleClickHourly = () => {
-  //   history.push('/hourly');
-  //   const { coord } = currentWeather;
-  //   dispatch(oneCallWeather(coord.lat, coord.lon));
-  // }
+  const handleHourly = () => {
+    history.push('/hourly')
+  };
 
+  const handleActive = (e) => {
+    if(location.pathname === e) return true
+  }
+ 
   return (
     <div className={cx('tabs')}>
-      <div onClick={() => history.push('/today')}>Today</div>
-      <div onClick={() => history.push('/hourly')}>Hourly</div>
+      <div 
+        className={cx('tab',{ 'active': handleActive('/today')})} 
+        onClick={handleToday}
+      >
+        Today
+      </div>
+      <div 
+        className={cx('tab',{ 'active': location.pathname === '/hourly' })} 
+        onClick={handleHourly}
+      >
+        Hourly
+      </div>
     </div>
   )
 }

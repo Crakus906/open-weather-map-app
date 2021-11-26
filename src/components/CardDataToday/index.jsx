@@ -8,7 +8,7 @@ const cx = cn.bind(styles);
 export default function CardDataToday({ label, value }) {
 
   return (
-    <div className={cx('cardItem')}>
+    <div className={cx('card-item')}>
       <div className={cx('label')}>
         {label}
       </div>
