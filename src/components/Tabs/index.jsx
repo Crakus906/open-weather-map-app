@@ -12,11 +12,15 @@ export default function Tabs() {
   const location = useLocation();
 
   const handleToday = () => {
-    history.push('/today')
+    history.push('/today');
   };
 
   const handleHourly = () => {
-    history.push('/hourly')
+    history.push('/hourly');
+  };
+
+  const handleForecastEightDay = () => {
+    history.push('/forecast-eight-day');
   };
 
   const handleActive = (e) => {
@@ -36,6 +40,12 @@ export default function Tabs() {
         onClick={handleHourly}
       >
         Hourly
+      </div>
+      <div 
+        className={cx('tab',{ 'active': location.pathname === '/forecast-eight-day' })} 
+        onClick={handleForecastEightDay}
+      >
+        8 days
       </div>
     </div>
   )

@@ -10,11 +10,12 @@
 
 .arrow-svg {
   width: 20px;
+  transition: 0.5s;
 }
 
 .arrow-svg-active {
   transform: rotate(180deg);
-  transition: 0.3;
+  transition: 0.5s;
 }
 
 .weather-main {

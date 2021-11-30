@@ -2,7 +2,7 @@ import React from 'react';
 import cn from 'classnames/bind';
 import moment from 'moment';
 import { useSelector } from 'react-redux';
-import { currentWeatherSelector } from '../../redux/selector/selector';
+import { currentWeatherSelector, oneCallWeatherSelector } from '../../redux/selector/selector';
 import { DownSunsetSvg, SunsetSvg, UpSunsetSvg } from '../../assets/icon';
 import { CardDataToday, WrapperBlock } from '../../components';
 
@@ -12,38 +12,48 @@ const cx = cn.bind(styles);
 
 export default function CardToday() {
 	const currentWeather = useSelector(currentWeatherSelector);
+  const oneCallWeather = useSelector(oneCallWeatherSelector)
 
-	if(!currentWeather) return null;
+	if(!currentWeather || !oneCallWeather) return null;
 
 	const {
-		name, main, sys, wind, visibility
+		name, sys,
 	} = currentWeather;
+
+  const {
+    humidity, pressure, visibility, dew_point, temp, wind_gust, feels_like
+  } = oneCallWeather.current
 
   const weatherTodayData = [
     {
       svg: null,
-      label: 'High / Low',
-      value: `${main.temp_max}/${main.temp_min}`
+      label: 'Dew Point',
+      value: `${Math.round(dew_point)}`
     },
     {
       svg: null,
       label: 'Wind',
-      value: `${wind.speed} m/s`
+      value: `${Math.round(wind_gust)} km/h`
     },
     {
       svg: null,
       label: 'Humidity',
-      value: `${main.humidity}%`
+      value: `${humidity}%`
     },
     {
       svg: null,
       label: 'Pressure',
-      value: `${main.pressure} in`
+      value: `${pressure} in`
     },
     {
       svg: null,
       label: 'Visibility',
       value: `${visibility / 1000} mi`
+    },
+    {
+      svg: null,
+      label: 'temp',
+      value: `${Math.round(temp)} °C `
     },
   ]
 
@@ -53,7 +63,7 @@ export default function CardToday() {
     >
       <div className={cx('today-details-dard')}>
         <div className={cx('feelsLike-block')}>
-          <span className={cx('temp-feels')} feelsLikeBlock >{main.feels_like}°</span>
+          <span className={cx('temp-feels')} feelsLikeBlock >{Math.round(feels_like)}°</span>
           <span>Feels Like</span>         
         </div>
         <div className={cx('sunset-block')}>

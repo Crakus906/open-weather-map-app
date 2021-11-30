@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import cn from 'classnames/bind';
 import Input from '../Input';
 import debounce from 'lodash/debounce';
 import { Form, Formik } from 'formik';
-import { useDispatch } from 'react-redux';
 import { useHistory } from "react-router-dom";
 import { weatherCity } from '../../redux/action/weather';
 
@@ -15,9 +15,17 @@ export default function Header() {
   const dispatch = useDispatch();
   const history = useHistory();
 
+
   const handleOnChange = debounce((e) => {
     dispatch(weatherCity(e))
-  },500)
+    sessionStorage.setItem('city', e);
+  },500);
+
+  useEffect(() => {
+    // const storage = sessionStorage.getItem('city')
+    // dispatch(weatherCity(storage))
+  }, [])
+  console.log(window.onload);
 
   return (
     <div className={cx('header')}>

@@ -25,11 +25,11 @@ export default function CurrentWeather() {
       title={`City: ${name}`}
       thisTime={moment.utc().format('LLLL')}
     >
-			<div className={cx('titleblock')}>
-        <span className={cx('temp')}>{main.temp}°C</span>
+			<div className={cx('title-block')}>
+        <span className={cx('temp')}>{Math.round(main.temp)}°C</span>
         <img src={`http://openweathermap.org/img/wn/${weather[0]?.icon}@2x.png`} alt="" />
 			</div>
-      <div className={cx('description')}>{weather[0].description}<div>{main.temp_max}°/{main.temp_min}°</div></div>
+      <div className={cx('description')}>{weather[0].description}<div>{weather[0].main}</div></div>
 		</WrapperBlock>
 	)
 }

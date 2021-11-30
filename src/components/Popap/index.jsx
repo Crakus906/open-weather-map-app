@@ -5,23 +5,23 @@ import styles from './style.module.scss';
 
 const cx = cn.bind(styles);
 
-export default function Popap({ item }) {
+export default function Popap({ item, handleMathRound }) {
   const data = [ 
     {
       label: 'Feels Like',
-      value: item.feels_like,
+      value: Math.round(item.feels_like),
     },
     {
       label: 'Wind',
-      value: item.wind_gust,
+      value: `${Math.round(item.wind_gust)} km/h`,
     },
     {
       label: 'Humidity',
-      value: item.humidity,
+      value: `${item.humidity} %`,
     },
     {
       label: 'UV Index',
-      value: `${item.uvi} of ${item.visibility}`,
+      value: `${Math.round(item.uvi)} of ${item.visibility}`,
     }
   ]
 

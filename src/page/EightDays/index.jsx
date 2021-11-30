@@ -1,17 +1,17 @@
-import React from 'react';
+import React  from 'react';
 import cn from 'classnames/bind';
-import { CardHourly } from '../../moduls';
 import Weather from '../Weather';
 
 import styles from './style.module.scss';
+import { ForecastEightDays } from '../../moduls';
 
 const cx = cn.bind(styles);
 
-export default function Hourly() {
+export default function EightDays() {
 
   return (
     <Weather >
-      <CardHourly />
+      <ForecastEightDays />
     </Weather>
   )
 }
