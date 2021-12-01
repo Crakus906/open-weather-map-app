@@ -21,10 +21,7 @@ export default function Header() {
     sessionStorage.setItem('city', e);
   },500);
 
-  useEffect(() => {
-    // const storage = sessionStorage.getItem('city')
-    // dispatch(weatherCity(storage))
-  }, [])
+
   console.log(window.onload);
 
   return (

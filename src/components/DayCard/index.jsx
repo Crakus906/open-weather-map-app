@@ -1,19 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 import cn from 'classnames/bind';
 import moment from 'moment';
-import Popap from '../Popap';
-import { ArrowSvg } from '../../assets/icon';
 
 import styles from './style.module.scss';
 
 const cx = cn.bind(styles);
 
-export default function DayCard({ item, id , handleClickItem}) {
+export default function DayCard({ item, id , handleClickItem, idItem}) {
 
   return (
     <div 
       key={id}
-      className={cx('item-day')}
+      className={cx('item-day', { 'item-day-active': idItem === id})}
       onClick={() => handleClickItem(id, item.dt)}
     >
       {moment.unix(item.dt).format('dddd')}
