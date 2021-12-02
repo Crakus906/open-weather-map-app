@@ -1,19 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import cn from 'classnames/bind';
-import moment from 'moment';
 import { DayCard, DetailsDay, WrapperBlock } from '../../components';
-
-import styles from './style.module.scss';
 import { useSelector } from 'react-redux';
 import { oneCallWeatherSelector } from '../../redux/selector/selector';
 import { useHistory, useParams } from 'react-router';
+
+import styles from './style.module.scss';
 
 const cx = cn.bind(styles);
 
 export default function ForecastEightDays() {
   const history = useHistory();
   const params = useParams();
-  const [show, setShow] = useState();
   const [idItem, setItemId] = useState(null);
   const oneCallWeather = useSelector(oneCallWeatherSelector);
 
@@ -28,7 +26,6 @@ export default function ForecastEightDays() {
   } = oneCallWeather;
 
   const handleClickItem = (id) => {
-    setShow(true);
     setItemId(id);
     history.push(`/forecast-eight-day/${id}`);
   };

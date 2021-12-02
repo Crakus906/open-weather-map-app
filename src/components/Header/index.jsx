@@ -21,9 +21,6 @@ export default function Header() {
     sessionStorage.setItem('city', e);
   },500);
 
-
-  console.log(window.onload);
-
   return (
     <div className={cx('header')}>
       <div className={cx('logo')}>Forecast</div>

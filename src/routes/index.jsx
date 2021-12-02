@@ -7,7 +7,7 @@ const Weather = lazy(() => import('../page/Weather/index'));
 const ToDay = lazy(() => import('../page/Today/index'));
 const Hourly = lazy(() => import('../page/Hourly/index'));
 const EightDays = lazy(() => import('../page/EightDays/index'));
-const DetailsDay = lazy(() => import('../components/DetailsDay/index'))
+const FiveDays = lazy(() => import('../page/FiveDays/index'))
 
 const Routes = () => {
   const dispatch = useDispatch();
@@ -24,7 +24,7 @@ const Routes = () => {
       <Route path="/today" component={ToDay} />   
       <Route path="/hourly" component={Hourly} />      
       <Route path="/forecast-eight-day/:id?" component={EightDays} />      
-      {/* <Route path="/forecast-eight-day/:id" component={DetailsDay} />       */}
+      {/* <Route path="/forecast-five-day/:id?" component={FiveDays} />       */}
     </Switch>
   </Suspense>
 )};

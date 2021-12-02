@@ -48,6 +48,12 @@ export default function Tabs() {
       >
         8 days
       </div>
+      {/* <div 
+        className={cx('tab',{ 'active': handleActive(`/forecast-eight-day/${+params.id || 0}` )})} 
+        onClick={handleForecastEightDay}
+      >
+        5 days
+      </div> */}
     </div>
   )
 }

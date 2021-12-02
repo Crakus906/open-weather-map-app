@@ -6,7 +6,6 @@ const cx = cn.bind(styles);
 
 export default function TempDay({title, description, weather, feels_like }) {
 
-  console.log(title === 'Morning', weather);
   return (
     <div className={cx('container-day', {'active': title === 'Morning'})}>
       <div>{title}</div>
