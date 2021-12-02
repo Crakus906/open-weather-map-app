@@ -1,3 +1,6 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable react/prop-types */
 import React from 'react';
 import cn from 'classnames/bind';
 import moment from 'moment';
@@ -6,12 +9,13 @@ import styles from './style.module.scss';
 
 const cx = cn.bind(styles);
 
-export default function DayCard({ item, id , handleClickItem, idItem}) {
-
+export default function DayCard({
+  item, id, handleClickItem, idItem,
+}) {
   return (
-    <div 
+    <div
       key={id}
-      className={cx('item-day', { 'item-day-active': idItem === id})}
+      className={cx('item-day', { 'item-day-active': idItem === id })}
       onClick={() => handleClickItem(id, item.dt)}
     >
       {moment.unix(item.dt).format('dddd')}
@@ -19,13 +23,16 @@ export default function DayCard({ item, id , handleClickItem, idItem}) {
       <div className={cx('temp')}>
         <div className={cx('temp-block')}>
           <span className={cx('label-temp')}>min</span>
-          <span  className={cx('min')}>{Math.round(item.temp.min)}</span> 
+          <span className={cx('min')}>{Math.round(item.temp.min)}</span>
         </div>
         <div className={cx('temp-block')}>
           <span className={cx('label-temp')}>max</span>
-          <span>{Math.round(item.temp.max)} </span>
+          <span>
+            {Math.round(item.temp.max)}
+            {' '}
+          </span>
         </div>
       </div>
     </div>
-    )
+  );
 }

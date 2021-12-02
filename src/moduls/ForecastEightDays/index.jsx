@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import cn from 'classnames/bind';
-import { DayCard, DetailsDay, WrapperBlock } from '../../components';
 import { useSelector } from 'react-redux';
+import { useParams } from 'react-router';
+import { useHistory } from 'react-router-dom';
+import { DayCard, DetailsDay, WrapperBlock } from '../../components';
 import { oneCallWeatherSelector } from '../../redux/selector/selector';
-import { useHistory, useParams } from 'react-router';
 
 import styles from './style.module.scss';
 
@@ -16,13 +17,13 @@ export default function ForecastEightDays() {
   const oneCallWeather = useSelector(oneCallWeatherSelector);
 
   useEffect(() => {
-    setItemId(+params.id)
-  }, [])
+    setItemId(+params.id || 0);
+  }, []);
 
-  if(!oneCallWeather) return null;
+  if (!oneCallWeather) return null;
 
   const {
-    daily, timezone
+    daily, timezone,
   } = oneCallWeather;
 
   const handleClickItem = (id) => {
@@ -30,12 +31,12 @@ export default function ForecastEightDays() {
     history.push(`/forecast-eight-day/${id}`);
   };
 
-  const currentDay = daily.find((item, i) => i === idItem)
+  const currentDay = daily.find((item, i) => i === idItem);
 
-	return (
+  return (
     <WrapperBlock
       title={`City: ${timezone}`}
-      classname='eight'
+      classname="eight"
     >
       <div className={cx('container')}>
         {daily.map((item, id) => (
@@ -45,9 +46,9 @@ export default function ForecastEightDays() {
             handleClickItem={handleClickItem}
             idItem={idItem}
           />
-        ))}       
+        ))}
       </div>
       {currentDay && <DetailsDay currentDay={currentDay} />}
-		</WrapperBlock>
-	)
+    </WrapperBlock>
+  );
 }

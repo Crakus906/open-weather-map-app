@@ -1,24 +1,25 @@
+/* eslint-disable default-param-last */
+/* eslint-disable react/prop-types */
 import React from 'react';
 import cn from 'classnames/bind';
-import styles from './style.module.scss';
 import moment from 'moment';
+import styles from './style.module.scss';
 import Day from './Day';
 import TempDay from './TempDay';
 
 const cx = cn.bind(styles);
 
-const dataValue = ['clouds', 'dew_point', 'humidity', 'moon_phase', 'pop', 'pressure', 'snow', 'rain', 'uvi', 'wind_gust']
-const dataTIme = ['moonrise', 'moonset', 'sunrise', 'sunset',]
+const dataValue = ['clouds', 'dew_point', 'humidity', 'moon_phase', 'pop', 'pressure', 'snow', 'rain', 'uvi', 'wind_gust'];
+const dataTIme = ['moonrise', 'moonset', 'sunrise', 'sunset'];
 
 const dataDay = [
-  {label: 'Morning', key: 'morn'},
-  {label: 'Day', key: 'day'},
-  {label: 'Evening', key: 'eve'},
-  {label: 'Night', key: 'night'}
-]
+  { label: 'Morning', key: 'morn' },
+  { label: 'Day', key: 'day' },
+  { label: 'Evening', key: 'eve' },
+  { label: 'Night', key: 'night' },
+];
 
 export default function DetailsDay({ currentDay }) {
-
   const getDescription = (obj = {}, key) => {
     if (obj[key] === undefined || NaN) return '-';
     return Math.round(obj[key]);
@@ -30,13 +31,12 @@ export default function DetailsDay({ currentDay }) {
       <div className={cx('content')}>
         <div className={cx('detail-weather')}>
           {dataValue.map((key) => (
-            <Day 
+            <Day
               title={key.split('_').join(' ')}
               description={getDescription(currentDay, key)}
             />
           ))}
-          
-        </div>    
+        </div>
         <div className={cx('detail-temp')}>
           <div className={cx('explanation')}>
             <div>Temperature:</div>
@@ -46,12 +46,12 @@ export default function DetailsDay({ currentDay }) {
             <TempDay
               title={item.label}
               description={getDescription(currentDay.temp, item.key)}
-              feels_like={getDescription(currentDay.feels_like, item.key)}
+              feelsLike={getDescription(currentDay.feels_like, item.key)}
               weather={currentDay.weather[0]}
             />
-          ))} 
+          ))}
         </div>
       </div>
     </div>
-    )
+  );
 }

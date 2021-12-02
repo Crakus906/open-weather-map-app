@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import cn from 'classnames/bind';
 import moment from 'moment';
@@ -14,22 +15,30 @@ export default function HourCard({ item, id }) {
 
   const hansleShowSvg = (e) => {
     setShow(!show);
-    setIdItem(e)
+    setIdItem(e);
+    console.log(item, id);
   };
 
   return (
     <div className={cx('card-item')}>
       <div className={cx('summary')}>
         {moment.unix(item.dt).format('h:mm:a ')}
-        <span>{Math.round(item.temp)}°</span>
+        <span>
+          {Math.round(item.temp)}
+          °
+        </span>
         <div className={cx('weather-main')}>
           <img src={`http://openweathermap.org/img/wn/${item.weather[0]?.icon}@2x.png`} alt={item.weather[0]?.description} />
           <span>{item.weather[0].main}</span>
         </div>
-        <div>{Math.round(item.wind_gust)} km/h</div>
-        <ArrowSvg onClick={() => hansleShowSvg(id)} className={cx('arrow-svg',{ 'arrow-svg-active': id === idItem && show })} />
+        <div>
+          {Math.round(item.wind_gust)}
+          {' '}
+          km/h
+        </div>
+        <ArrowSvg onClick={() => hansleShowSvg(id)} className={cx('arrow-svg', { 'arrow-svg-active': id === idItem && show })} />
       </div>
       {show ? <Popap item={item} /> : null}
     </div>
-  )
+  );
 }

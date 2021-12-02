@@ -10,26 +10,32 @@ import styles from './style.module.scss';
 const cx = cn.bind(styles);
 
 export default function CurrentWeather() {
-	const weatherData = useSelector(currentWeatherSelector)
+  const weatherData = useSelector(currentWeatherSelector);
 
-	if(!weatherData) return null;
+  if (!weatherData) return null;
 
-	const {
-		name, 
-		weather,
-		main,
-	} =  weatherData;
+  const {
+    name,
+    weather,
+    main,
+  } = weatherData;
 
-	return (
+  return (
     <WrapperBlock
       title={`City: ${name}`}
       thisTime={moment.utc().format('LLLL')}
     >
-			<div className={cx('title-block')}>
-        <span className={cx('temp')}>{Math.round(main.temp)}°C</span>
+      <div className={cx('title-block')}>
+        <span className={cx('temp')}>
+          {Math.round(main.temp)}
+          °C
+        </span>
         <img src={`http://openweathermap.org/img/wn/${weather[0]?.icon}@2x.png`} alt="" />
-			</div>
-      <div className={cx('description')}>{weather[0].description}<div>{weather[0].main}</div></div>
-		</WrapperBlock>
-	)
+      </div>
+      <div className={cx('description')}>
+        {weather[0].description}
+        <div>{weather[0].main}</div>
+      </div>
+    </WrapperBlock>
+  );
 }

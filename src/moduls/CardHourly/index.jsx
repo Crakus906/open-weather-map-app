@@ -11,31 +11,33 @@ const cx = cn.bind(styles);
 
 export default function CardHourly() {
   const currentWeather = useSelector(currentWeatherSelector);
-  const oneCallData  = useSelector(oneCallWeatherSelector);
+  const oneCallData = useSelector(oneCallWeatherSelector);
 
-  if(!oneCallData) return null
+  if (!oneCallData) return null;
 
-  const dataTime = oneCallData?.hourly.map(item => moment.unix(item.dt).format('dddd MMMM, Do'));
-  const days = dataTime.filter((item, pos) => dataTime.indexOf(item) === pos)
+  const dataTime = oneCallData?.hourly.map((item) => moment.unix(item.dt).format('dddd MMMM, Do'));
+  const days = dataTime.filter((item, pos) => dataTime.indexOf(item) === pos);
 
-	return (
-		<WrapperBlock
+  return (
+    <WrapperBlock
       title={`Hourly Weather - ${currentWeather?.name}, ${currentWeather?.sys?.country}`}
       thisTime={`As of ${moment().format(' h:mm:a ')}`}
     >
-      {days.map((day) => 
+      {days.map((day) => (
         <>
           <span className={cx('day')}>{day}</span>
           {oneCallData.hourly.map((item, id) => (
-            day === moment.unix(item.dt).format('dddd MMMM, Do') ?
-            <HourCard 
-              item={item}
-              id={id}
-            /> : null
+            day === moment.unix(item.dt).format('dddd MMMM, Do')
+              ? (
+                <HourCard
+                  item={item}
+                  id={id}
+                />
+              ) : null
           ))}
         </>
-      )}
-      
-		</WrapperBlock>
-	)
+      ))}
+
+    </WrapperBlock>
+  );
 }

@@ -11,80 +11,83 @@ import styles from './style.module.scss';
 const cx = cn.bind(styles);
 
 export default function CardToday() {
-	const currentWeather = useSelector(currentWeatherSelector);
-  const oneCallWeather = useSelector(oneCallWeatherSelector)
+  const currentWeather = useSelector(currentWeatherSelector);
+  const oneCallWeather = useSelector(oneCallWeatherSelector);
 
-	if(!currentWeather || !oneCallWeather) return null;
-
-	const {
-		name, sys,
-	} = currentWeather;
+  if (!currentWeather || !oneCallWeather) return null;
 
   const {
-    humidity, pressure, visibility, dew_point, temp, wind_gust, feels_like
-  } = oneCallWeather.current
+    name, sys,
+  } = currentWeather;
+
+  const {
+    humidity, pressure, visibility, dewPoint, temp, windGust, feels_like,
+  } = oneCallWeather.current;
 
   const weatherTodayData = [
     {
       svg: null,
       label: 'Dew Point',
-      value: `${Math.round(dew_point)}`
+      value: `${Math.round(dewPoint)}`,
     },
     {
       svg: null,
       label: 'Wind',
-      value: `${Math.round(wind_gust)} km/h`
+      value: `${Math.round(windGust)} km/h`,
     },
     {
       svg: null,
       label: 'Humidity',
-      value: `${humidity}%`
+      value: `${humidity}%`,
     },
     {
       svg: null,
       label: 'Pressure',
-      value: `${pressure} in`
+      value: `${pressure} in`,
     },
     {
       svg: null,
       label: 'Visibility',
-      value: `${visibility / 1000} mi`
+      value: `${visibility / 1000} mi`,
     },
     {
       svg: null,
       label: 'temp',
-      value: `${Math.round(temp)} °C `
+      value: `${Math.round(temp)} °C `,
     },
-  ]
+  ];
 
-	return (
-		<WrapperBlock
+  return (
+    <WrapperBlock
       title={`Weather Today in ${name}, ${sys.country}`}
     >
       <div className={cx('today-details-dard')}>
         <div className={cx('feelsLike-block')}>
-          <span className={cx('temp-feels')} feelsLikeBlock >{Math.round(feels_like)}°</span>
-          <span>Feels Like</span>         
+          <span className={cx('temp-feels')} feelsLikeBlock>
+            {Math.round(feels_like)}
+            °
+          </span>
+          <span>Feels Like</span>
         </div>
         <div className={cx('sunset-block')}>
-          <SunsetSvg className={cx('sunset-svg')}/>
+          <SunsetSvg className={cx('sunset-svg')} />
           <div className={cx('sunset')}>
             <div className={cx('left-time')}>
               <UpSunsetSvg className={cx('arrow')} />
               {moment.unix(sys.sunrise).format('h:mm a')}
             </div>
             <div>
-              <DownSunsetSvg className={cx('arrow')} />  
+              <DownSunsetSvg className={cx('arrow')} />
               {moment.unix(sys.sunset).format('h:mm a')}
             </div>
           </div>
         </div>
       </div>
       {
-        weatherTodayData.map(item => (
+        weatherTodayData.map((item) => (
           <CardDataToday value={item.value} label={item.label} />
         ))
       }
-		</WrapperBlock>
-	)
+    </WrapperBlock>
+  );
 }

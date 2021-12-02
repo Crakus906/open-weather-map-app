@@ -8,14 +8,13 @@ import styles from './style.module.scss';
 const cx = cn.bind(styles);
 
 export default function Today() {
-
   return (
-    <Weather >
+    <Weather>
       <div className={cx('home')}>
         <CurrentWeather />
         <CardToday />
         <ForecastHourly />
       </div>
     </Weather>
-  )
+  );
 }
