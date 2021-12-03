@@ -6,7 +6,7 @@ import styles from './style.module.scss';
 
 const cx = cn.bind(styles);
 
-export default function Popap({ item, handleMathRound }) {
+export default function Popap({ item }) {
   const data = [
     {
       label: 'Feels Like',

@@ -12,3 +12,12 @@
   padding: 20px 16px 0;
   font-weight: 700;
 }
+
+.weather-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img {
+    width: 70px;
+  }
+}

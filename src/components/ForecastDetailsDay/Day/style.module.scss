@@ -1,0 +1,11 @@
+.container-day {
+  display: flex;
+  flex-wrap: wrap;
+  width: 130px;
+  padding: 15px 15px 15px 0;
+}
+
+.title {
+  margin-right: 10px;
+  text-transform: capitalize;
+}

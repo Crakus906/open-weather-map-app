@@ -24,7 +24,7 @@ const Routes = () => {
         <Route path="/today" component={ToDay} />
         <Route path="/hourly" component={Hourly} />
         <Route path="/forecast-eight-day/:id?" component={EightDays} />
-        {/* <Route path="/forecast-five-day/:id?" component={FiveDays} />       */}
+        <Route path="/forecast-five-day/:id?" component={FiveDays} />
       </Switch>
     </Suspense>
   );

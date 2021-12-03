@@ -1,0 +1,21 @@
+.container-day {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border-right: 1px solid #dedede;
+  height: max-content;
+}
+
+.active {
+  border-left: 1px solid #dedede;
+}
+
+.main {
+
+}
+
+.temp {
+  padding-top: 13px;
+}

@@ -26,6 +26,10 @@ export default function Tabs() {
     history.push(`/forecast-eight-day/${+params.id || 0}`);
   };
 
+  const handleForecastFiveDay = () => {
+    history.push(`/forecast-five-day/${+params.id || 0}`);
+  };
+
   const handleActive = (e) => {
     if (location.pathname === e) return true;
   };
@@ -53,12 +57,13 @@ export default function Tabs() {
       >
         8 days
       </div>
-      {/* <div
-        className={cx('tab', { active: handleActive(`/forecast-eight-day/${+params.id || 0}`) })}
-        onClick={handleForecastEightDay}
+      <div
+        className={cx('tab', { active: handleActive(`/forecast-five-day/${+params.id || 0}`) })}
+        onClick={handleForecastFiveDay}
+        role="button"
       >
         5 days
-      </div> */}
+      </div>
     </div>
   );
 }

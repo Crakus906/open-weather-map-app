@@ -21,7 +21,7 @@ const dataDay = [
 
 export default function DetailsDay({ currentDay }) {
   const getDescription = (obj = {}, key) => {
-    if (obj[key] === undefined || NaN) return '-';
+    if (!obj[key]) return '-';
     return Math.round(obj[key]);
   };
 
